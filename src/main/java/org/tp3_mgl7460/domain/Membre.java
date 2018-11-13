@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author sergedelil
  */
-public abstract class Membre {
+public class Membre {
     
     String nom;
     String prenom;
