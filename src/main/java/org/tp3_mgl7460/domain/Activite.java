@@ -14,10 +14,10 @@ import java.util.Objects;
 public class Activite {
     private String description;
     Categorie categorie;
-    private String heure;
+    private int heure;
     private String date;
 
-    public Activite(String description, Categorie categorie, String heure, String date) {
+    public Activite(String description, Categorie categorie, int heure, String date) {
         this.description = description;
         this.categorie = categorie;
         this.heure = heure;
@@ -32,7 +32,7 @@ public class Activite {
         return categorie;
     }
 
-    public String getHeure() {
+    public int getHeure() {
         return heure;
     }
 
@@ -48,7 +48,7 @@ public class Activite {
         this.categorie = categorie;
     }
 
-    public void setHeure(String heure) {
+    public void setHeure(int heure) {
         this.heure = heure;
     }
 

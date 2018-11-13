@@ -13,7 +13,7 @@ public class Geologue extends Membre{
     
     private final int heureMinCycle = 55;
     
-    public Geologue(String nom, String prenom, String sexe, String cycle, String numeroPermis) {
+    public Geologue(String nom, String prenom, int sexe, String cycle, String numeroPermis) {
         super(nom, prenom, sexe, cycle, numeroPermis);
     }
     

@@ -13,7 +13,7 @@ public class Psychologue extends Membre{
     
     private final int heureMinCycle = 90;
 
-    public Psychologue(String nom, String prenom, String sexe, String cycle, String numeroPermis) {
+    public Psychologue(String nom, String prenom, int sexe, String cycle, String numeroPermis) {
         super(nom, prenom, sexe, cycle, numeroPermis);
     }
     

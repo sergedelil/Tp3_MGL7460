@@ -15,7 +15,7 @@ public class Architecte extends Membre{
     
     private int heureTransferee;
 
-    public Architecte(int heureTransferee, String nom, String prenom, String sexe, String cycle, String numeroPermis, int heureMinCycle) {
+    public Architecte(int heureTransferee, String nom, String prenom, int sexe, String cycle, String numeroPermis, int heureMinCycle) {
         super(nom, prenom, sexe, cycle, numeroPermis);
         this.heureTransferee = heureTransferee;
         

@@ -12,16 +12,16 @@ import java.util.Objects;
  *
  * @author sergedelil
  */
-public class Membre {
+public abstract class Membre {
     
     String nom;
     String prenom;
-    String sexe;
+    int sexe;
     String cycle;
     String numeroPermis;
     ArrayList<Activite> activites;
 
-    public Membre(String nom, String prenom, String sexe, String cycle, String numeroPermis) {
+    public Membre(String nom, String prenom, int sexe, String cycle, String numeroPermis) {
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
@@ -37,7 +37,7 @@ public class Membre {
         return prenom;
     }
 
-    public String getSexe() {
+    public int getSexe() {
         return sexe;
     }
 
@@ -61,7 +61,7 @@ public class Membre {
         this.prenom = prenom;
     }
 
-    public void setSexe(String sexe) {
+    public void setSexe(int sexe) {
         this.sexe = sexe;
     }
 
@@ -131,7 +131,7 @@ public class Membre {
     }
     
     public boolean validerSexe(){
-        return false;
+        return (String.valueOf(nom).matches("^[012]$"));
     }
     public boolean validerCycle(){
         return false;
