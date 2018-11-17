@@ -21,16 +21,23 @@ public class Membre {
     String cycle;
     String numeroPermis;
     ArrayList<Activite> activites;
+    int heureTransfereesDuCyclePrecedent;
+    int heureTotalActiviteCycle;
 
-    public Membre(String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis) {
+  
+
+    public Membre(String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis, int heureTransfereesDuCyclePrecedent) {
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
         this.ordre = ordre;
         this.cycle = cycle;
         this.numeroPermis = numeroPermis;
+        this.heureTransfereesDuCyclePrecedent = heureTransfereesDuCyclePrecedent;
+        this.heureTotalActiviteCycle = 0;
     }
 
+    
     public String getNom() {
         return nom;
     }
@@ -57,6 +64,14 @@ public class Membre {
 
     public ArrayList<Activite> getActivites() {
         return activites;
+    }
+
+    public int getHeureTotalActiviteCycle() {
+        return heureTotalActiviteCycle;
+    }
+     
+    public int getHeureTransfereesDuCyclePrecedent() {
+        return heureTransfereesDuCyclePrecedent;
     }
 
     public void setNom(String nom) {
@@ -87,6 +102,15 @@ public class Membre {
         this.activites = activites;
     }
 
+      public void setHeureTotalActiviteCycle(int heureTotalActiviteCycle) {
+        this.heureTotalActiviteCycle = heureTotalActiviteCycle;
+    }
+      
+    public void setHeureTransfereesDuCyclePrecedent(int heureTransfereesDuCyclePrecedent) {
+        this.heureTransfereesDuCyclePrecedent = heureTransfereesDuCyclePrecedent;
+    }
+    
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

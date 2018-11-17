@@ -12,9 +12,12 @@ package org.tp3_mgl7460.domain;
 public class Psychologue extends Membre{
     
     private final int heureMinCycle = 90;
+    private final int heureMinCategorieCours = 25;
+    
+    
 
-    public Psychologue(String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis) {
-        super(nom, prenom, sexe, ordre, cycle, numeroPermis);
+    public Psychologue(String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis, int heureTransfereesDuCyclePrecedent) {
+        super(nom, prenom, sexe, ordre, cycle, numeroPermis, heureTransfereesDuCyclePrecedent);
     }
     
     @Override
@@ -28,10 +31,14 @@ public class Psychologue extends Membre{
     }
 
     @Override
-    public boolean atteintHeureMinCycle() {
-        return false;
+    public boolean atteintHeureMinCycle() {   
+        return heureTotalActiviteCycle >= heureMinCycle;
     }
-
+    
+    public boolean aucuneHeureTransfereDuCyclePrecedent() {   
+        return heureTransfereesDuCyclePrecedent == 0;
+    }
+    
     @Override
     public String toString() {
         return "Psychologue{" + "nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", ordre=" + ordre +", cycle=" + cycle + ", numeroPermis=" + numeroPermis + ", heureMinCycle=" + heureMinCycle + ", activites=" + activites + '}';

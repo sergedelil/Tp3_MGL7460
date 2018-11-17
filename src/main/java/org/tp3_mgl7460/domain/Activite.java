@@ -96,7 +96,7 @@ public class Activite {
     }
     
     public boolean validerDescription(){
-        return this.description.length() > 0;
+        return this.description.length() > 20;
     }
     
     public boolean validerHeure(){

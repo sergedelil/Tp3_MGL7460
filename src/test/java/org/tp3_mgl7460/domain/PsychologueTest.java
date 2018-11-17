@@ -27,8 +27,7 @@ public class PsychologueTest {
     
     @Before
     public void setUp() {
-         psyGood = new Psychologue("John","Doe",1,"Psychologue", "2010-2015","12345-12");
-         psyBad = new Psychologue("John","Doe",1,"Psychologue", "2010-2016","1235-12");
+         psyGood = new Psychologue("John","Doe",1,"Psychologue", "2010-2015","12345-12", 0);
     }
     
     @After
@@ -46,8 +45,18 @@ public class PsychologueTest {
     }
 
     @Test
-    public void testVatteintHeureMinCycle() {
+    public void testatteintHeureMinCycle() {
         assertEquals(true, psyGood.atteintHeureMinCycle());
     }
+    
+    @Test
+    public void testatteintHeureMinCours() {
+        assertEquals(true, psyGood.atteintHeureMinCycle());
+    }
+    
+    @Test public void testAucuneHeureTransfereDuCyclePrecedent(){
+        assertEquals(true, psyGood.aucuneHeureTransfereDuCyclePrecedent());
+    }
+    
         
 }

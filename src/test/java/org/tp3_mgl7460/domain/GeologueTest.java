@@ -33,7 +33,7 @@ public class GeologueTest {
     
     @Before
     public void setUp() {
-         geologue = new Geologue("Piraquive","Andres",1,"Geologue", "2013-2016","PA3223", 55);     
+         geologue = new Geologue("Piraquive","Andres",1,"Geologue", "2013-2016","PA3223", 55, 2);     
     }
     
     @After

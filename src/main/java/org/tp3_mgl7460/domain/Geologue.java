@@ -14,8 +14,8 @@ public class Geologue extends Membre {
     public final int heureMinCycle = 55;
     int heureCycle;
 
-    public Geologue(String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis, int heureCycle) {
-        super(nom, prenom, sexe, ordre, cycle, numeroPermis);
+    public Geologue(String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis, int heureCycle, int heureTransfereesDuCyclePrecedent) {
+        super(nom, prenom, sexe, ordre, cycle, numeroPermis, heureTransfereesDuCyclePrecedent);
         this.heureCycle = heureCycle;
     }
 
