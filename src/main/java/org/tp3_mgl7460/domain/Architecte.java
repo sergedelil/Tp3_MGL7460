@@ -15,8 +15,8 @@ public class Architecte extends Membre{
     
     private int heureTransferee;
 
-    public Architecte(int heureTransferee, String nom, String prenom, int sexe, String cycle, String numeroPermis, int heureMinCycle) {
-        super(nom, prenom, sexe, cycle, numeroPermis);
+    public Architecte(int heureTransferee, String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis, int heureMinCycle) {
+        super(nom, prenom, sexe, ordre, cycle, numeroPermis);
         this.heureTransferee = heureTransferee;
         
     }
@@ -52,7 +52,7 @@ public class Architecte extends Membre{
 
     @Override
     public String toString() {
-        return "Architecte{" + "nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", cycle=" + cycle + ", numeroPermis=" + numeroPermis + ", heureMinCycle=" + heureMinCycle + ", activites=" + activites + ", heureTransferee= " + heureTransferee +'}';
+        return "Architecte{" + "nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe +", ordre=" + ordre + ", cycle=" + cycle + ", numeroPermis=" + numeroPermis + ", heureMinCycle=" + heureMinCycle + ", activites=" + activites + ", heureTransferee= " + heureTransferee +'}';
     }
      
 }

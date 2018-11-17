@@ -17,14 +17,16 @@ public class Membre {
     String nom;
     String prenom;
     int sexe;
+    String ordre;
     String cycle;
     String numeroPermis;
     ArrayList<Activite> activites;
 
-    public Membre(String nom, String prenom, int sexe, String cycle, String numeroPermis) {
+    public Membre(String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis) {
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
+        this.ordre = ordre;
         this.cycle = cycle;
         this.numeroPermis = numeroPermis;
     }
@@ -39,6 +41,10 @@ public class Membre {
 
     public int getSexe() {
         return sexe;
+    }
+    
+    public String getOrdre() {
+        return ordre;
     }
 
     public String getCycle() {
@@ -63,6 +69,10 @@ public class Membre {
 
     public void setSexe(int sexe) {
         this.sexe = sexe;
+    }
+    
+    public void setOrdre(String ordre) {
+        this.ordre = ordre;
     }
 
     public void setCycle(String cycle) {
@@ -137,6 +147,12 @@ public class Membre {
         return false;
     }
     
+    public boolean validerOrdre(){
+        return ordre.equalsIgnoreCase("Architecte")
+                || ordre.equalsIgnoreCase("Geologue")
+                || ordre.equalsIgnoreCase("Psychologue");
+    }
+    
     public boolean validerNumeroPermis(){
         return false;
     }
@@ -144,12 +160,5 @@ public class Membre {
     public boolean atteintHeureMinCycle(){
         return false;
     }
-    
-    
-    
-    
-    
-    
-    
-    
+ 
 }
