@@ -49,7 +49,7 @@ public class Geologue extends Membre {
 
         if (heureCycle >= heureMinCycle) {
             isAtteintHeureMinCycle = true;
-        };
+        }
         return isAtteintHeureMinCycle;
     }
 
