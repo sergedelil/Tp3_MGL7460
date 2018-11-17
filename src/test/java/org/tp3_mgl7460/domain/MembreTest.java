@@ -25,7 +25,7 @@ public class MembreTest {
     public void setUp() {
         cat = new Categorie("cours", 15, -1);
         uneActivite = new Activite("cours de deontologie", cat, 6, "2012-10-22");
-        membre = new Membre("Smith", "John", 1, "2012-2014", "T3443");
+        membre = new Membre("Smith", "John", 1, "Architecte", "2012-2014", "T3443");
         membre.activites = new ArrayList<>();
         resultat = false;
     }
@@ -96,6 +96,19 @@ public class MembreTest {
     @Test
     public void testValiderSexe() {
         assertTrue(String.valueOf(membre.getSexe()).matches("^[012]$"));
+    }
+    
+    @Test
+    public void testValiderOrdre() {
+        String listOrdre [] = {"Architecte","Psychologue","Geologue"};
+        boolean trouve = false;
+        for(String ordre : listOrdre){
+            if (ordre.equalsIgnoreCase(membre.getOrdre())){
+                trouve = true;
+                break;
+            }
+        }
+        assertTrue(trouve);
     }
     
 //    @Test

@@ -13,8 +13,8 @@ public class Psychologue extends Membre{
     
     private final int heureMinCycle = 90;
 
-    public Psychologue(String nom, String prenom, int sexe, String cycle, String numeroPermis) {
-        super(nom, prenom, sexe, cycle, numeroPermis);
+    public Psychologue(String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis) {
+        super(nom, prenom, sexe, ordre, cycle, numeroPermis);
     }
     
     @Override
@@ -34,7 +34,7 @@ public class Psychologue extends Membre{
 
     @Override
     public String toString() {
-        return "Psychologue{" + "nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", cycle=" + cycle + ", numeroPermis=" + numeroPermis + ", heureMinCycle=" + heureMinCycle + ", activites=" + activites + '}';
+        return "Psychologue{" + "nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", ordre=" + ordre +", cycle=" + cycle + ", numeroPermis=" + numeroPermis + ", heureMinCycle=" + heureMinCycle + ", activites=" + activites + '}';
     }
    
 }

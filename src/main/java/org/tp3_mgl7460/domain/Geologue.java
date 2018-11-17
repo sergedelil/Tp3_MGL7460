@@ -14,8 +14,8 @@ public class Geologue extends Membre {
     public final int heureMinCycle = 55;
     int heureCycle;
 
-    public Geologue(String nom, String prenom, int sexe, String cycle, String numeroPermis, int heureCycle) {
-        super(nom, prenom, sexe, cycle, numeroPermis);
+    public Geologue(String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis, int heureCycle) {
+        super(nom, prenom, sexe, ordre, cycle, numeroPermis);
         this.heureCycle = heureCycle;
     }
 
@@ -23,7 +23,7 @@ public class Geologue extends Membre {
     public boolean validerCycle() {        
         boolean isValiderCycle = false;
         
-        if(cycle == "2013-2016")
+        if("2013-2016".equals(cycle))
         {
             isValiderCycle = true;
         }
@@ -55,7 +55,7 @@ public class Geologue extends Membre {
 
     @Override
     public String toString() {
-        return "Geologue{" + "nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", cycle=" + cycle + ", numeroPermis=" + numeroPermis + ", heureMinCycle=" + heureMinCycle + ", activites=" + activites + '}';
+        return "Geologue{" + "nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe +", ordre=" + ordre + ", cycle=" + cycle + ", numeroPermis=" + numeroPermis + ", heureMinCycle=" + heureMinCycle + ", activites=" + activites + '}';
     }
 
 }
