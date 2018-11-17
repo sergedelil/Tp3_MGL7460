@@ -19,12 +19,12 @@ public class Psychologue extends Membre{
     
     @Override
     public boolean validerCycle() {
-        return false;
+        return cycle == ("2010-2015");
     }
 
     @Override
     public boolean validerNumeroPermis() {
-        return false;
+        return numeroPermis.matches("\\d{5}[-/.]\\d{2}");
     }
 
     @Override

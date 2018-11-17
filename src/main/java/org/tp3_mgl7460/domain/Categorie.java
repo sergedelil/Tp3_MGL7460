@@ -7,6 +7,7 @@ package org.tp3_mgl7460.domain;
 
 import java.util.Objects;
 
+
 /**
  *
  * @author sergedelil
