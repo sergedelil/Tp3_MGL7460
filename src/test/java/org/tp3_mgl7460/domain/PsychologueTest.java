@@ -27,8 +27,8 @@ public class PsychologueTest {
     
     @Before
     public void setUp() {
-         psyGood = new Psychologue("John","Doe",1,"2010-2015","12345-12");
-         psyBad = new Psychologue("John","Doe",1,"2010-2016","1235-12");
+         psyGood = new Psychologue("John","Doe",1,"Psychologue", "2010-2015","12345-12");
+         psyBad = new Psychologue("John","Doe",1,"Psychologue", "2010-2016","1235-12");
     }
     
     @After
