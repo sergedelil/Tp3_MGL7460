@@ -100,11 +100,13 @@ public class Activite {
     }
     
     public boolean validerHeure(){
-        return false;
+        return this.heure >= 1;
     }
     
     public boolean validerDate(){
-        return false;
+        String[] dates = this.date.split("-");
+            return (Integer.parseInt(dates[0]) >= 2010 && Integer.parseInt(dates[0]) <= 2015);
+       
     }
     
     public boolean validerActivite(){
