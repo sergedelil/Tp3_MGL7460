@@ -11,8 +11,9 @@ import static org.junit.Assert.*;
  * @author ADB
  */
 public class PsychologueTest {
-    Psychologue psyGood;
-    Psychologue psyBad;
+    Psychologue psy;
+    Activite activiteUn, activiteDeux;
+    Categorie categorieUn, categorieDeux;
    
         public PsychologueTest() {        
     }
@@ -27,7 +28,14 @@ public class PsychologueTest {
     
     @Before
     public void setUp() {
-         psyGood = new Psychologue("John","Doe",1,"Psychologue", "2010-2015","12345-12", 0);
+         psy = new Psychologue("John","Doe",1,"Psychologue", "2010-2015","12345-12", 0);
+         categorieUn = new Categorie("cours", 25, 0);
+         categorieDeux = new Categorie("séminaire", 0, 0);
+         activiteUn = new Activite("Cours sur la déontologie",categorieUn,25,"2013-03-20");
+         activiteDeux = new Activite("Séminaire sur l'architecture contemporaine",categorieDeux,65,"2014-03-20");
+         psy.ajouterActivite(activiteUn);
+         psy.ajouterActivite(activiteDeux);
+         //psy.ajouterHeureTotalActivite(activiteUn.getHeure());
     }
     
     @After
@@ -36,27 +44,26 @@ public class PsychologueTest {
     
     @Test
     public void testValiderCycle() {
-        assertEquals(true, psyGood.validerCycle());
+        assertEquals(true, psy.validerCycle());
     }
 
     @Test
     public void testValiderNumeroPermis() {
-        assertEquals(true, psyGood.validerNumeroPermis());
+        assertEquals(true, psy.validerNumeroPermis());
     }
 
     @Test
-    public void testatteintHeureMinCycle() {
-        assertEquals(true, psyGood.atteintHeureMinCycle());
+    public void testAtteintHeureMinCycle() {
+        assertEquals(true, psy.atteintHeureMinCycle());
     }
     
     @Test
-    public void testatteintHeureMinCours() {
-        assertEquals(true, psyGood.atteintHeureMinCycle());
+    public void testAtteintHeureMinCours() {
+        assertEquals(true, psy.atteintHeureMinCours());
     }
     
     @Test public void testAucuneHeureTransfereDuCyclePrecedent(){
-        assertEquals(true, psyGood.aucuneHeureTransfereDuCyclePrecedent());
+        assertEquals(true, psy.aucuneHeureTransfereDuCyclePrecedent());
     }
-    
-        
+      
 }

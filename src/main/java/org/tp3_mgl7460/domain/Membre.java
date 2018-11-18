@@ -156,6 +156,10 @@ public class Membre {
         this.activites.add(activite);
     }
     
+    public void ajouterHeureTotalActivite(int heures){
+        this.heureTotalActiviteCycle += heures;
+    }
+    
     public boolean validerNom(){
         return false;
     }

@@ -1,9 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.tp3_mgl7460.domain;
+
+import java.util.ArrayList;
+
 
 /**
  *
@@ -13,6 +11,8 @@ public class Psychologue extends Membre{
     
     private final int heureMinCycle = 90;
     private final int heureMinCategorieCours = 25;
+    
+    int heureTotalCategorieCours = 0;
     
     
 
@@ -35,8 +35,23 @@ public class Psychologue extends Membre{
         return heureTotalActiviteCycle >= heureMinCycle;
     }
     
+    public boolean atteintHeureMinCours() {
+        return heureTotalCategorieCours >= heureMinCategorieCours;
+    }
+    
     public boolean aucuneHeureTransfereDuCyclePrecedent() {   
         return heureTransfereesDuCyclePrecedent == 0;
+    }
+    
+    @Override
+    public void ajouterActivite(Activite activite){
+        if(activite.getCategorie().getNomCategorie() == "cours"){
+            heureTotalCategorieCours += activite.getHeure();
+        }
+        this.ajouterHeureTotalActivite(activite.getHeure());
+        
+        this.activites = new ArrayList<Activite>();
+        this.activites.add(activite);
     }
     
     @Override
