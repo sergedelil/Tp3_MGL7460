@@ -153,7 +153,9 @@ public class Membre {
     }
 
     public void ajouterActivite(Activite activite){
+        this.activites = new ArrayList<>();
         this.activites.add(activite);
+        this.ajouterHeureTotalActivite(activite.getHeure());
     }
     
     public void ajouterHeureTotalActivite(int heures){

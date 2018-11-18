@@ -50,7 +50,7 @@ public class Psychologue extends Membre{
         }
         this.ajouterHeureTotalActivite(activite.getHeure());
         
-        this.activites = new ArrayList<Activite>();
+        this.activites = new ArrayList<>();
         this.activites.add(activite);
     }
     
