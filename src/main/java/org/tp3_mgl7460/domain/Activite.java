@@ -58,7 +58,7 @@ public class Activite {
 
     @Override
     public String toString() {
-        return "Activit\u00e9{" + "description=" + description + ", categorie=" + categorie + ", heure=" + heure + ", date=" + date + '}';
+        return "Activit {" + "description=" + description + ", categorie=" + categorie + ", heure=" + heure + ", date=" + date + '}';
     }
 
     @Override
@@ -100,7 +100,7 @@ public class Activite {
     }
     
     public boolean validerHeure(){
-        return false;
+        return heure >= 1;
     }
     
     public boolean validerDate(){

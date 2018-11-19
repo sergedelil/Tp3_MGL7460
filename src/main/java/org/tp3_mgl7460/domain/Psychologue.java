@@ -5,6 +5,8 @@
  */
 package org.tp3_mgl7460.domain;
 
+import org.tp3_mgl7460.analyse.Message;
+
 /**
  *
  * @author sergedelil
@@ -26,9 +28,17 @@ public class Psychologue extends Membre{
     public boolean validerNumeroPermis() {
         return false;
     }
+    
+    @Override
+    public boolean examinerDemande(Message msg){
+        // à redefinir
+        // implementer toute la logique d'affaire selon le type de Membre
+        // examiner la demande et produire les msg dans la sortie
+        return false;
+    }
 
     @Override
-    public boolean atteintHeureMinCycle() {
+    public boolean atteintHeureMinCycle(int heure) {
         return false;
     }
 

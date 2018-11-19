@@ -7,6 +7,7 @@ package org.tp3_mgl7460.domain;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import org.tp3_mgl7460.analyse.Message;
 
 /**
  *
@@ -21,6 +22,7 @@ public class Membre {
     String cycle;
     String numeroPermis;
     ArrayList<Activite> activites;
+    ArrayList<Categorie> categories;
 
     public Membre(String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis) {
         this.nom = nom;
@@ -29,6 +31,8 @@ public class Membre {
         this.ordre = ordre;
         this.cycle = cycle;
         this.numeroPermis = numeroPermis;
+        this.activites = new ArrayList<>();
+        this.categories = new ArrayList<>();
     }
 
     public String getNom() {
@@ -58,6 +62,12 @@ public class Membre {
     public ArrayList<Activite> getActivites() {
         return activites;
     }
+    
+    public ArrayList<Categorie> getCategories() {
+        return categories;
+    }
+   
+    
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -86,6 +96,9 @@ public class Membre {
     public void setActivites(ArrayList<Activite> activites) {
         this.activites = activites;
     }
+    public void setCategories(ArrayList<Categorie> cat){
+        this.categories = cat;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -108,6 +121,9 @@ public class Membre {
         if (!Objects.equals(this.sexe, other.sexe)) {
             return false;
         }
+        if (!Objects.equals(this.ordre, other.ordre)) {
+            return false;
+        }
         if (!Objects.equals(this.cycle, other.cycle)) {
             return false;
         }
@@ -123,28 +139,27 @@ public class Membre {
         hash = 43 * hash + Objects.hashCode(this.nom);
         hash = 43 * hash + Objects.hashCode(this.prenom);
         hash = 43 * hash + Objects.hashCode(this.sexe);
+        hash = 43 * hash + Objects.hashCode(this.ordre);
         hash = 43 * hash + Objects.hashCode(this.cycle);
         hash = 43 * hash + Objects.hashCode(this.numeroPermis);
         return hash;
     }
 
     public void ajouterActivite(Activite activite){
-        this.activites.add(activite);
+        if (activite != null)
+            this.activites.add(activite);
     }
     
     public boolean validerNom(){
-        return false;
+        return nom.matches("^\\w+$");
     }
     
     public boolean validerPrenom(){
-        return false;
+        return prenom.matches("^\\w+$");
     }
     
     public boolean validerSexe(){
-        return (String.valueOf(nom).matches("^[012]$"));
-    }
-    public boolean validerCycle(){
-        return false;
+        return (String.valueOf(sexe).matches("^[012]$"));
     }
     
     public boolean validerOrdre(){
@@ -153,11 +168,25 @@ public class Membre {
                 || ordre.equalsIgnoreCase("Psychologue");
     }
     
-    public boolean validerNumeroPermis(){
+    public boolean validerCycle(){
+        // à redefinir
         return false;
     }
     
-    public boolean atteintHeureMinCycle(){
+    public boolean validerNumeroPermis(){
+        // à redefinir
+        return false;
+    }
+    
+    public boolean atteintHeureMinCycle(int heure){
+        // à redefinir
+        return false;
+    }
+    
+    public boolean examinerDemande(Message msg){ 
+        // à redefinir
+        // implementer toute la logique d'affaire selon le type de Membre
+        // examiner la demande et produire les msg dans la sortie
         return false;
     }
  

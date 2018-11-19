@@ -5,7 +5,6 @@
  */
 package org.tp3_mgl7460.domain;
 
-import java.util.ArrayList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,13 +25,14 @@ public class MembreTest {
         cat = new Categorie("cours", 15, -1);
         uneActivite = new Activite("cours de deontologie", cat, 6, "2012-10-22");
         membre = new Membre("Smith", "John", 1, "Architecte", "2012-2014", "T3443");
-        membre.activites = new ArrayList<>();
         resultat = false;
     }
     
     @After
     public void tearDown() {
         membre = null;
+        uneActivite = null;
+        cat = null;
     }
 
     @Test
@@ -110,16 +110,4 @@ public class MembreTest {
         }
         assertTrue(trouve);
     }
-    
-//    @Test
-//    public void testValiderCycle() {} à faire à la redefinition
-
-   
-//    @Test
-//    public void testValiderNumeroPermis() {} à faire à la redefinition
-
-    
-//    @Test
-//    public void testAtteintHeureMinCycle() {} à faire à la redefinition
-    
 }

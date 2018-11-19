@@ -16,6 +16,7 @@ import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
 import org.apache.commons.io.IOUtils;
 
+
 /**
  *
  * @author sergedelil
@@ -23,16 +24,17 @@ import org.apache.commons.io.IOUtils;
 public class JSONHash {
     
     private final String filename;
-    private JSONObject obj = null;
+    private JSONObject obj;
 
     public JSONHash(String filename) {
+        this.obj = null;
         this.filename = filename;
     }
 
-    public boolean load()throws FileNotFoundException, JSONException,IOException, FormationContinueException{
+    public boolean load() throws FileNotFoundException, JSONException, FormationContinueException{
         boolean resultat = false;
         try {
-            String stringJson = IOUtils.toString(new FileInputStream(filename),  "UTF-8");
+            String stringJson = IOUtils.toString(new FileInputStream(this.filename),  "UTF-8");
             JSONObject jsonObj = (JSONObject) JSONSerializer.toJSON(stringJson);
             this.obj = jsonObj;
             resultat = true;
@@ -64,5 +66,17 @@ public class JSONHash {
             throw new FormationContinueException(e.toString());
         }
         return resultat;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public JSONObject getObj() {
+        return obj;
+    }
+
+    public void setObj(JSONObject obj) {
+        this.obj = obj;
     }
 }

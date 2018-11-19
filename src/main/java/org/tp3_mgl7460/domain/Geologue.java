@@ -5,6 +5,8 @@
  */
 package org.tp3_mgl7460.domain;
 
+import org.tp3_mgl7460.analyse.Message;
+
 /**
  *
  * @author sergedelil
@@ -12,15 +14,14 @@ package org.tp3_mgl7460.domain;
 public class Geologue extends Membre {
 
     public final int heureMinCycle = 55;
-    int heureCycle;
 
-    public Geologue(String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis, int heureCycle) {
+    public Geologue(String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis) {
         super(nom, prenom, sexe, ordre, cycle, numeroPermis);
-        this.heureCycle = heureCycle;
     }
 
     @Override
-    public boolean validerCycle() {        
+    public boolean validerCycle() { 
+        // return cycle.matches("^2013-2016$"); plus simple
         boolean isValiderCycle = false;
         
         if("2013-2016".equals(cycle))
@@ -44,13 +45,16 @@ public class Geologue extends Membre {
     }
 
     @Override
-    public boolean atteintHeureMinCycle() {
-        boolean isAtteintHeureMinCycle = false;
-
-        if (heureCycle >= heureMinCycle) {
-            isAtteintHeureMinCycle = true;
-        }
-        return isAtteintHeureMinCycle;
+    public boolean atteintHeureMinCycle(int heure) {
+        return heure >= heureMinCycle ;
+    }
+    
+    @Override
+    public boolean examinerDemande(Message msg){
+        // à redefinir
+        // implementer toute la logique d'affaire selon le type de Membre
+        // examiner la demande et produire les msg dans la sortie
+        return false;
     }
 
     @Override
