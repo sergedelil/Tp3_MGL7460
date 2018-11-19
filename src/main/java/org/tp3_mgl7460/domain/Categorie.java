@@ -7,6 +7,7 @@ package org.tp3_mgl7460.domain;
 
 import java.util.Objects;
 
+
 /**
  *
  * @author sergedelil
@@ -82,23 +83,99 @@ public class Categorie {
         return "Categorie{" + "nomCategorie=" + nomCategorie + ", heureMin=" + heureMin + ", heureMax=" + heureMax + '}';
     }
     
-    public boolean validerCategorie(){
-        return false;
+     public boolean validerCategorie() {
+        boolean isValideCategorie = false;
+
+        if (nomCategorie == "cours" || nomCategorie == "atelier" || nomCategorie == "séminaire"
+                || nomCategorie == "colloque" || nomCategorie == "conférence" || nomCategorie == "lecture dirigée"
+                || nomCategorie == "présentation" || nomCategorie == "groupe de discussion"
+                || nomCategorie == "groupe de discussion" || nomCategorie == "rédaction professionnelle") {
+            isValideCategorie = true;
+        }
+        return isValideCategorie;
     }
-    
-    public boolean admetHeureMin(){
-        return false;
+
+    public boolean admetHeureMin() {
+        boolean admetHeureMin = false;
+
+        if ((nomCategorie == "cours" || nomCategorie == "atelier" || nomCategorie == "séminaire"
+                || nomCategorie == "colloque" || nomCategorie == "conférence" || nomCategorie == "lecture dirigée") && heureMin >= 17) {
+            admetHeureMin = true;
+        }
+        return admetHeureMin;
     }
-    
-    public boolean admetHeureMax(){
-        return false;
+
+    public boolean admetHeureMax() {
+        boolean admetHeureMax = false;
+
+        switch (nomCategorie) {
+            case "présentation": 
+                if (heureMax <= 23) {
+                    admetHeureMax = true;
+                }
+                break;
+
+            case "groupe de discussion":
+                if (heureMax <= 17) {
+                    admetHeureMax = true;
+                }
+                break;
+
+            case "projet de recherche":
+                if (heureMax <= 23) {
+                    admetHeureMax = true;
+                }
+                break;
+
+            case "rédaction professionnelle":
+                if (heureMax <= 17) {
+                    admetHeureMax = true;
+                }
+                break;
+        }
+
+        return admetHeureMax;
     }
-    
-    public boolean atteintHeureMin(){
-        return false;
+
+    public boolean atteintHeureMin() {
+        boolean atteintHeureMin = false;
+
+        if ((nomCategorie == "cours" || nomCategorie == "atelier" || nomCategorie == "séminaire"
+                || nomCategorie == "colloque" || nomCategorie == "conférence" || nomCategorie == "lecture dirigée") && heureMin == 17) {
+            atteintHeureMin = true;
+        }
+        return atteintHeureMin;
+
     }
-    
-    public boolean atteintHeureMax(){
-        return false;
+
+    public boolean atteintHeureMax() {
+        boolean atteintHeureMax = false;
+
+        switch (nomCategorie) {
+            case "présentation":
+                if (heureMax == 23) {
+                    atteintHeureMax = true;
+                }
+                break;
+
+            case "groupe de discussion":
+                if (heureMax == 17) {
+                    atteintHeureMax = true;
+                }
+                break;
+
+            case "projet de recherche":
+                if (heureMax == 23) {
+                    atteintHeureMax = true;
+                }
+                break;
+                
+            case "rédaction professionnelle":
+                if (heureMax == 17) {
+                    atteintHeureMax = true;
+                }
+                break;
+        }
+        return atteintHeureMax;
     }
 }

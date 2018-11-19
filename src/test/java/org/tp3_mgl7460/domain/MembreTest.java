@@ -25,6 +25,7 @@ public class MembreTest {
         cat = new Categorie("cours", 15, -1);
         uneActivite = new Activite("cours de deontologie", cat, 6, "2012-10-22");
         membre = new Membre("Smith", "John", 1, "Architecte", "2012-2014", "T3443");
+
         resultat = false;
     }
     

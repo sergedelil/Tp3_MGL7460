@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.tp3_mgl7460.domain;
 
 import org.tp3_mgl7460.analyse.Message;
@@ -21,12 +16,12 @@ public class Psychologue extends Membre{
     
     @Override
     public boolean validerCycle() {
-        return false;
+        return cycle.matches("2010-2015");
     }
 
     @Override
     public boolean validerNumeroPermis() {
-        return false;
+        return numeroPermis.matches("\\d{5}[-/.]\\d{2}");
     }
     
     @Override
@@ -41,7 +36,14 @@ public class Psychologue extends Membre{
     public boolean atteintHeureMinCycle(int heure) {
         return false;
     }
-
+    
+    
+    
+    @Override
+    public void ajouterActivite(Activite activite){
+        this.activites.add(activite);
+    }
+    
     @Override
     public String toString() {
         return "Psychologue{" + "nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", ordre=" + ordre +", cycle=" + cycle + ", numeroPermis=" + numeroPermis + ", heureMinCycle=" + heureMinCycle + ", activites=" + activites + '}';

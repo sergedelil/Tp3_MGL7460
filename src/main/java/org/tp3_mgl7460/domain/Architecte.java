@@ -19,8 +19,7 @@ import org.tp3_mgl7460.analyse.Message;
  */
 public class Architecte extends Membre{
     
-    private final int heureMinCycle = 40;
-    
+    private int heureMinCycle = 40;        
     private int heureTransferee;
 
     public Architecte(int heureTransferee, String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis) {
@@ -40,6 +39,7 @@ public class Architecte extends Membre{
     @Override
     public boolean validerCycle() {
         return cycle.matches("^2012-2014$");
+
     }
 
     @Override

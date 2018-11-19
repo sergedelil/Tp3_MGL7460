@@ -96,7 +96,7 @@ public class Activite {
     }
     
     public boolean validerDescription(){
-        return false;
+        return this.description.length() > 20;
     }
     
     public boolean validerHeure(){
@@ -104,7 +104,9 @@ public class Activite {
     }
     
     public boolean validerDate(){
-        return false;
+        String[] dates = this.date.split("-");
+            return (Integer.parseInt(dates[0]) >= 2010 && Integer.parseInt(dates[0]) <= 2015);
+       
     }
     
     public boolean validerActivite(){

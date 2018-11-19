@@ -23,6 +23,7 @@ public class Membre {
     String numeroPermis;
     ArrayList<Activite> activites;
     ArrayList<Categorie> categories;
+  
 
     public Membre(String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis) {
         this.nom = nom;
@@ -33,8 +34,10 @@ public class Membre {
         this.numeroPermis = numeroPermis;
         this.activites = new ArrayList<>();
         this.categories = new ArrayList<>();
+
     }
 
+    
     public String getNom() {
         return nom;
     }
@@ -67,8 +70,6 @@ public class Membre {
         return categories;
     }
    
-    
-
     public void setNom(String nom) {
         this.nom = nom;
     }

@@ -34,7 +34,6 @@ public class GeologueTest {
     @Before
     public void setUp() {
          geologue = new Geologue("Piraquive","Andres",1,"Geologue", "2013-2016","PA3223");
-       
     }
     
     @After
