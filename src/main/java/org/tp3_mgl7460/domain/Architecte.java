@@ -49,7 +49,7 @@ public class Architecte extends Membre{
 
     @Override
     public boolean atteintHeureMinCycle(int heure) {
-        return false;
+        return heure >= heureMinCycle;
     }
     
     public boolean validerHeureTranferee() {
