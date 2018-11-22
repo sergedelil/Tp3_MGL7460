@@ -64,69 +64,89 @@ public class Geologue extends Membre {
                 msg.getErreurs().add("L'activité «"+activite.getDescription()+"» est dans une catégorie non reconnue. Elle sera ignorée.");
             }
        }
-       msg.getErreurs().add(validerNbHeureMinCours(this.getActivites()));
-       msg.getErreurs().add(validerNbHeureMinProjetRecherche(this.getActivites()));
-       msg.getErreurs().add(validerNbHeureMinGroupeDiscussion(this.getActivites()));
+       
+       msg.getErreurs().add(validateNbHeureMinCategorie(this.getActivites(), 22, "cours"));
+       msg.getErreurs().add(validateNbHeureMinCategorie(this.getActivites(), 3, "projet de recherche"));
+       msg.getErreurs().add(validateNbHeureMinCategorie(this.getActivites(), 1, "groupe de discussion"));
 
         return true;
     }
     
-     public String validerNbHeureMinCours(ArrayList<Activite> activites){
+    public String validateNbHeureMinCategorie(ArrayList<Activite> activites, int heureMin, String nomCategorie){
     
-        final int heureMin = 22;
+        //final int heureMin = 22;
         int heureCount = 0;
         String msg = null;
         
         for (Activite activite : activites){
-            if((activite.getCategorie() != null) && activite.getCategorie().getNomCategorie().equals("cours")){
+            if((activite.getCategorie() != null) && activite.getCategorie().getNomCategorie().equals(nomCategorie)){
                     heureCount = heureCount + activite.getHeure();
                 }
                 
         }
         if (heureCount < heureMin){
                 int diff = heureMin - heureCount;
-                msg = "Il manque "+ diff+" heures de formation pour la categorie cours.";
-            }
-        return msg;
-    }
-     
-     public String validerNbHeureMinProjetRecherche(ArrayList<Activite> activites){
-    
-        final int heureMin = 3;
-        int heureCount = 0;
-        String msg = null;
-        
-        for (Activite activite : activites){
-            if((activite.getCategorie() != null) && activite.getCategorie().getNomCategorie().equals("projet de recherche")){
-                    heureCount = heureCount + activite.getHeure();
-                }
-                
-        }
-        if (heureCount < heureMin){
-                int diff = heureMin - heureCount;
-                msg = "Il manque "+ diff+" heures de formation pour la categorie projet de recherche.";
+                msg = "Il manque "+ diff+" heures de formation pour la categorie" + " " + nomCategorie + ".";
             }
         return msg;
     }
     
-     public String validerNbHeureMinGroupeDiscussion(ArrayList<Activite> activites){
-    
-        final int heureMin = 1;
-        int heureCount = 0;
-        String msg = null;
-        
-        for (Activite activite : activites){
-            if((activite.getCategorie() != null) && activite.getCategorie().getNomCategorie().equals("groupe de discussion")){
-                    heureCount = heureCount + activite.getHeure();
-                }
-                
-        }
-        if (heureCount < heureMin){
-                int diff = heureMin - heureCount;
-                msg = "Il manque "+ diff + " heures de formation pour la categorie groupe de discussion.";
-            }
-        return msg;
-    }
+//     public String validerNbHeureMinCours(ArrayList<Activite> activites){
+//    
+//        final int heureMin = 22;
+//        int heureCount = 0;
+//        String msg = null;
+//        
+//        for (Activite activite : activites){
+//            if((activite.getCategorie() != null) && activite.getCategorie().getNomCategorie().equals("cours")){
+//                    heureCount = heureCount + activite.getHeure();
+//                }
+//                
+//        }
+//        if (heureCount < heureMin){
+//                int diff = heureMin - heureCount;
+//                msg = "Il manque "+ diff+" heures de formation pour la categorie cours.";
+//            }
+//        return msg;
+//    }
+//     
+//     public String validerNbHeureMinProjetRecherche(ArrayList<Activite> activites){
+//    
+//        final int heureMin = 3;
+//        int heureCount = 0;
+//        String msg = null;
+//        
+//        for (Activite activite : activites){
+//            if((activite.getCategorie() != null) && activite.getCategorie().getNomCategorie().equals("projet de recherche")){
+//                    heureCount = heureCount + activite.getHeure();
+//                }
+//                
+//        }
+//        if (heureCount < heureMin){
+//                int diff = heureMin - heureCount;
+//                msg = "Il manque "+ diff+" heures de formation pour la categorie projet de recherche.";
+//            }
+//        return msg;
+//    }
+//    
+//     public String validerNbHeureMinGroupeDiscussion(ArrayList<Activite> activites){
+//    
+//        final int heureMin = 1;
+//        int heureCount = 0;
+//        String msg = null;
+//        
+//        for (Activite activite : activites){
+//            if((activite.getCategorie() != null) && activite.getCategorie().getNomCategorie().equals("groupe de discussion")){
+//                    heureCount = heureCount + activite.getHeure();
+//                }
+//                
+//        }
+//        if (heureCount < heureMin){
+//                int diff = heureMin - heureCount;
+//                msg = "Il manque "+ diff + " heures de formation pour la categorie groupe de discussion.";
+//            }
+//        return msg;
+//    }
      
     public String validerDate(Activite activite){
         

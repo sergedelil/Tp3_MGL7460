@@ -22,8 +22,8 @@ public class GeologueTest {
     Geologue geologue;
     Activite activiteUn, activiteDeux, activiteTrois, activiteQuatre;
     Categorie categorieUn, categorieDeux, categorieTrois, categorieQuatre;
-    Message msg;  
-    
+    Message msg;
+
     public GeologueTest() {
     }
 
@@ -44,7 +44,7 @@ public class GeologueTest {
 
         activiteUn = new Activite("Cours sur la déontologie", categorieUn, 2, "2013-03-20");
         activiteDeux = new Activite("Séminaire sur l'architecture contemporaine", categorieDeux, 1, "2014-03-20");
-        activiteTrois = new Activite("Participation à un groupe de discussion", categorieTrois, 0, "2009-03-20");      
+        activiteTrois = new Activite("Participation à un groupe de discussion", categorieTrois, 0, "2009-03-20");
 
         geologue.ajouterActivite(activiteUn);
         geologue.ajouterActivite(activiteDeux);
@@ -89,31 +89,31 @@ public class GeologueTest {
     public void testValiderDateErrorMessage() {
         assertEquals("La date de l'activité «Participation à un groupe de discussion» n'est pas valide. Elle sera ignorée.", geologue.validerDate(activiteTrois));
     }
-    
-     @Test
-    public void testValiderHeure(){
+
+    @Test
+    public void testValiderHeure() {
         assertEquals("L'heure de l'activité «Participation à un groupe de discussion» n'est pas valide. Elle sera ignorée.", geologue.validerHeure(activiteTrois));
     }
-    
+
     @Test
-    public void validerNbHeureMinCours(){
-        assertEquals("Il manque 20 heures de formation pour la categorie cours.", geologue.validerNbHeureMinCours(geologue.getActivites()));
+    public void validateNbHeureMinCategorieCours() {
+        assertEquals("Il manque 20 heures de formation pour la categorie cours.", geologue.validateNbHeureMinCategorie(geologue.getActivites(), 22, "cours"));
     }
-    
+
     @Test
-    public void validerNbHeureMinProjetRecherche(){
-        assertEquals("Il manque 2 heures de formation pour la categorie projet de recherche.", geologue.validerNbHeureMinProjetRecherche(geologue.getActivites()));
+    public void validateNbHeureMinCategorieProjetRecherche() {
+        assertEquals("Il manque 2 heures de formation pour la categorie projet de recherche.", geologue.validateNbHeureMinCategorie(geologue.getActivites(), 3, "projet de recherche"));
     }
-    
-     @Test
-    public void validerNbHeureMinGroupeDiscussion(){
-        assertEquals("Il manque 1 heures de formation pour la categorie groupe de discussion.", geologue.validerNbHeureMinGroupeDiscussion(geologue.getActivites()));
+
+    @Test
+    public void validateNbHeureMinCategorieGroupeDiscussion() {
+        assertEquals("Il manque 1 heures de formation pour la categorie groupe de discussion.", geologue.validateNbHeureMinCategorie(geologue.getActivites(), 1, "groupe de discussion"));
     }
-    
-     @Test
-    public void testExaminerDemande_return_true(){ 
-        msg = new Message("output");        
-        assertTrue(geologue.examinerDemande(msg)); 
+
+    @Test
+    public void testExaminerDemande_return_true() {
+        msg = new Message("output");
+        assertTrue(geologue.examinerDemande(msg));
     }
 
     /**
