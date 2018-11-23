@@ -96,26 +96,16 @@ public class Architecte extends Membre{
                     continue;
                 }
                 if(estCategorieDes6(activite.getCategorie().getNomCategorie())){
-                    nbHeureDes6Cumulee = nbHeureDes6Cumulee + activite.getHeure();
+                    nbHeureDes6Cumulee += activite.getHeure();
                 }
 
+                heurePresentation += GetAvtiviteCategorieHeure(activite, "présentation", heurePresentation);
+                
+                heureGrpDiscussion += GetAvtiviteCategorieHeure(activite, "groupe de discussion", heureGrpDiscussion);
 
-                if(activite.getCategorie().getNomCategorie().equals("présentation")){
-                    if(heurePresentation < activite.getCategorie().getHeureMax())
-                        heurePresentation = heurePresentation + activite.getHeure();
-                }
-                if(activite.getCategorie().getNomCategorie().equals("groupe de discussion")){
-                    if(heureGrpDiscussion < activite.getCategorie().getHeureMax())
-                        heureGrpDiscussion = heureGrpDiscussion + activite.getHeure();
-                }
-                if(activite.getCategorie().getNomCategorie().equals("projet de recherche")){
-                    if(heureProjRech < activite.getCategorie().getHeureMax())
-                        heureProjRech = heureProjRech + activite.getHeure();
-                }
-                if(activite.getCategorie().getNomCategorie().equals("rédaction professionnelle")){
-                    if(heureRedacProfe < activite.getCategorie().getHeureMax())
-                        heureRedacProfe = heureRedacProfe + activite.getHeure();
-                }
+                heureProjRech += GetAvtiviteCategorieHeure(activite, "projet de recherche", heureProjRech);
+                
+                heureRedacProfe += GetAvtiviteCategorieHeure(activite, "rédaction professionnelle", heureRedacProfe);                
             }
             if(! this.validerHeureTranferee())
                 msg.getErreurs().add("Le nombre d'heures transférées n'est pas valide. Elle sera ignorée.");
@@ -139,6 +129,15 @@ public class Architecte extends Membre{
             e.printStackTrace();
         }
         return reponse;
+    }
+    
+    private int GetAvtiviteCategorieHeure (Activite activite, String categorie, int heureAccumule){
+        int result = 0;
+        if(activite.getCategorie().getNomCategorie().equals(categorie)){
+            if(heureAccumule < activite.getCategorie().getHeureMax())
+                result = activite.getHeure();
+            }
+        return result;
     }
     
     private ArrayList<String> ConstruireListeCategorie(){
