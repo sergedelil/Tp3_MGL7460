@@ -21,14 +21,7 @@ public class Geologue extends Membre {
 
     @Override
     public boolean validerCycle() { 
-        // return cycle.matches("^2013-2016$"); plus simple
-        boolean isValiderCycle = false;
-        
-        if("2013-2016".equals(cycle))
-        {
-            isValiderCycle = true;
-        }
-        return isValiderCycle;
+        return cycle.matches("^2013-2016$");
     }
 
     @Override

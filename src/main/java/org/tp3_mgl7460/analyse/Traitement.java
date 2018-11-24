@@ -7,9 +7,9 @@ import org.tp3_mgl7460.domain.Membre;
 
 public class Traitement {
     
-    public static void traiterDemande(String inputFile, String categiries, String output) throws Exception{
+    public static void traiterDemande(String inputFile, String categories, String output) throws Exception{
         
-        Membre membre = chargerFormation(inputFile, categiries);
+        Membre membre = chargerFormation(inputFile, categories);
         Message msg = new Message(output);
         validerDemandeur(membre, msg);
         if(membre.examinerDemande(msg)){

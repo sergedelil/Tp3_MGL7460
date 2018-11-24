@@ -21,6 +21,13 @@ public class Architecte extends Membre{
     
     private int heureMinCycle = 40;        
     private int heureTransferee;
+    
+    private int nbHeureFormationCumulee = 0;
+    private int nbHeureDes6Cumulee = 0;
+    private int nbHeurePresentation = 0;
+    private int nbHeureGrpDiscussion = 0;
+    private int nbHeureProjRech = 0;
+    private int nbHeureRedacProfe = 0;
 
     public Architecte(int heureTransferee, String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis) {
         super(nom, prenom, sexe, ordre, cycle, numeroPermis);
@@ -49,7 +56,7 @@ public class Architecte extends Membre{
 
     @Override
     public boolean atteintHeureMinCycle(int heure) {
-        return false;
+        return heure >= heureMinCycle;
     }
     
     public boolean validerHeureTranferee() {
@@ -67,56 +74,16 @@ public class Architecte extends Membre{
     public boolean examinerDemande(Message msg){
         boolean reponse = false;
         try{
-            String dateDebut = "2012-04-01";
-            String dateFin = "2014-04-01";
-
-            int nbHeureFormationCumulee = 0;
-            int nbHeureDes6Cumulee = 0;
-            int heurePresentation = 0;
-            int heureGrpDiscussion = 0;
-            int heureProjRech = 0;
-            int heureRedacProfe = 0;
             int diff = 0;
-
-            for (Activite activite : this.getActivites()){
-
-                boolean apres = string2Date(activite.getDate()).after(string2Date(dateDebut));
-                boolean avant = string2Date(activite.getDate()).before(string2Date(dateFin));
-                if (! (avant && apres) ){
-                    msg.getErreurs().add("La date de l'activité «"+activite.getDescription()+"» n'est pas valide. Elle sera ignorée.");
-                    continue;
-                }
-                if(! activite.validerHeure()){
-                    msg.getErreurs().add("L'heure de l'activité «"+activite.getDescription()+"» n'est pas valide. Elle sera ignorée.");
-                    continue;
-                }
-                ArrayList<String> tabCat = ConstruireListeCategorie();
-                if( (activite.getCategorie() == null) || (! tabCat.contains(activite.getCategorie().getNomCategorie())) ){
-                    msg.getErreurs().add("L'activité «"+activite.getDescription()+"» est dans une catégorie non reconnue. Elle sera ignorée.");
-                    continue;
-                }
-                if(estCategorieDes6(activite.getCategorie().getNomCategorie())){
-                    nbHeureDes6Cumulee = nbHeureDes6Cumulee + activite.getHeure();
-                }
-
-
-                if(activite.getCategorie().getNomCategorie().equals("présentation")){
-                    if(heurePresentation < activite.getCategorie().getHeureMax())
-                        heurePresentation = heurePresentation + activite.getHeure();
-                }
-                if(activite.getCategorie().getNomCategorie().equals("groupe de discussion")){
-                    if(heureGrpDiscussion < activite.getCategorie().getHeureMax())
-                        heureGrpDiscussion = heureGrpDiscussion + activite.getHeure();
-                }
-                if(activite.getCategorie().getNomCategorie().equals("projet de recherche")){
-                    if(heureProjRech < activite.getCategorie().getHeureMax())
-                        heureProjRech = heureProjRech + activite.getHeure();
-                }
-                if(activite.getCategorie().getNomCategorie().equals("rédaction professionnelle")){
-                    if(heureRedacProfe < activite.getCategorie().getHeureMax())
-                        heureRedacProfe = heureRedacProfe + activite.getHeure();
-                }
-            }
+            nbHeureFormationCumulee = 0;
+            nbHeureDes6Cumulee = 0;
+            nbHeurePresentation = 0;
+            nbHeureGrpDiscussion = 0;
+            nbHeureProjRech = 0;
+            nbHeureRedacProfe = 0;
+    
+            GetToutCategoriesHeures(msg);
+ 
             if(! this.validerHeureTranferee())
                 msg.getErreurs().add("Le nombre d'heures transférées n'est pas valide. Elle sera ignorée.");
 
@@ -129,7 +96,7 @@ public class Architecte extends Membre{
                 diff = 17 - nbHeureDes6Cumulee;
                 msg.getErreurs().add("Il manque "+ diff+" heures de formation pour l'ensemble des catégories 1 à 6.");
             }
-            nbHeureFormationCumulee = nbHeureDes6Cumulee + heurePresentation + heureGrpDiscussion + heureProjRech + heureRedacProfe;
+            nbHeureFormationCumulee = nbHeureDes6Cumulee + nbHeurePresentation + nbHeureGrpDiscussion + nbHeureProjRech + nbHeureRedacProfe;
             if (nbHeureFormationCumulee < this.heureMinCycle){
                 diff = this.heureMinCycle - nbHeureFormationCumulee;
                 msg.getErreurs().add("Il manque "+ diff+" heures de formation pour compléter le cycle.");
@@ -139,6 +106,51 @@ public class Architecte extends Membre{
             e.printStackTrace();
         }
         return reponse;
+    }
+    
+    private void GetToutCategoriesHeures(Message msg){
+        String dateDebut = "2012-04-01";
+        String dateFin = "2014-04-01";
+            
+        for (Activite activite : this.getActivites()){
+
+            boolean apres = string2Date(activite.getDate()).after(string2Date(dateDebut));
+            boolean avant = string2Date(activite.getDate()).before(string2Date(dateFin));
+            if (! (avant && apres) ){
+                msg.getErreurs().add("La date de l'activité «"+activite.getDescription()+"» n'est pas valide. Elle sera ignorée.");
+                continue;
+            }
+            if(! activite.validerHeure()){
+                msg.getErreurs().add("L'heure de l'activité «"+activite.getDescription()+"» n'est pas valide. Elle sera ignorée.");
+                continue;
+            }
+            ArrayList<String> tabCat = ConstruireListeCategorie();
+            if( (activite.getCategorie() == null) || (! tabCat.contains(activite.getCategorie().getNomCategorie())) ){
+                msg.getErreurs().add("L'activité «"+activite.getDescription()+"» est dans une catégorie non reconnue. Elle sera ignorée.");
+                continue;
+            }
+            if(estCategorieDes6(activite.getCategorie().getNomCategorie())){
+                nbHeureDes6Cumulee += activite.getHeure();
+            }
+
+            nbHeurePresentation += GetActiviteCategorieHeure(activite, "présentation", nbHeurePresentation);
+                
+            nbHeureGrpDiscussion += GetActiviteCategorieHeure(activite, "groupe de discussion", nbHeureGrpDiscussion);
+
+            nbHeureProjRech += GetActiviteCategorieHeure(activite, "projet de recherche", nbHeureProjRech);
+                
+            nbHeureRedacProfe += GetActiviteCategorieHeure(activite, "rédaction professionnelle", nbHeureRedacProfe);                
+        }        
+    }
+            
+    
+    private int GetActiviteCategorieHeure (Activite activite, String categorie, int heureAccumule){
+        int result = 0;
+        if(activite.getCategorie().getNomCategorie().equals(categorie)){
+            if(heureAccumule < activite.getCategorie().getHeureMax())
+                result = activite.getHeure();
+            }
+        return result;
     }
     
     private ArrayList<String> ConstruireListeCategorie(){
