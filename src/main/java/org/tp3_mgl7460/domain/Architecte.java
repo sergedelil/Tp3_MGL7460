@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.tp3_mgl7460.domain;
 
 import java.text.DateFormat;
@@ -13,10 +9,7 @@ import java.util.Arrays;
 import java.util.Date;
 import org.tp3_mgl7460.analyse.Message;
 
-/**
- *
- * @author sergedelil
- */
+
 public class Architecte extends Membre{
     
     private int heureMinCycle = 40;        

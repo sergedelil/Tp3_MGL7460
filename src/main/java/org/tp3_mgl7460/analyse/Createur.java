@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.tp3_mgl7460.analyse;
 
 import java.io.FileNotFoundException;
@@ -19,10 +15,6 @@ import org.tp3_mgl7460.domain.Psychologue;
 import org.tp3_mgl7460.file.FormationContinueException;
 import org.tp3_mgl7460.file.JSONHash;
 
-/**
- *
- * @author sergedelil
- */
 public class Createur {
     
     public static Membre chargerFormation(String fichierEntre, String categorie) throws Exception{

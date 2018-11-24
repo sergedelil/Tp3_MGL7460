@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.tp3_mgl7460.domain;
 
 import java.util.Objects;
 
 
-/**
- *
- * @author sergedelil
- */
 public class Categorie {
     
     private String nomCategorie;
@@ -86,10 +78,10 @@ public class Categorie {
      public boolean validerCategorie() {
         boolean isValideCategorie = false;
 
-        if (nomCategorie == "cours" || nomCategorie == "atelier" || nomCategorie == "séminaire"
-                || nomCategorie == "colloque" || nomCategorie == "conférence" || nomCategorie == "lecture dirigée"
-                || nomCategorie == "présentation" || nomCategorie == "groupe de discussion"
-                || nomCategorie == "groupe de discussion" || nomCategorie == "rédaction professionnelle") {
+        if (nomCategorie.equals("cours") || nomCategorie.equals("atelier") || nomCategorie.equals("séminaire")
+                || nomCategorie.equals("colloque") || nomCategorie.equals("conférence") || nomCategorie.equals("lecture dirigée")
+                || nomCategorie.equals("présentation") || nomCategorie.equals("groupe de discussion")
+                || nomCategorie.equals("groupe de discussion") || nomCategorie.equals("rédaction professionnelle")) {
             isValideCategorie = true;
         }
         return isValideCategorie;
@@ -98,8 +90,8 @@ public class Categorie {
     public boolean admetHeureMin() {
         boolean admetHeureMin = false;
 
-        if ((nomCategorie == "cours" || nomCategorie == "atelier" || nomCategorie == "séminaire"
-                || nomCategorie == "colloque" || nomCategorie == "conférence" || nomCategorie == "lecture dirigée") && heureMin >= 17) {
+        if ((nomCategorie.equals("cours") || nomCategorie.equals("atelier") || nomCategorie.equals("séminaire")
+                || nomCategorie.equals("colloque") || nomCategorie.equals("conférence") || nomCategorie.equals("lecture dirigée")) && heureMin >= 17) {
             admetHeureMin = true;
         }
         return admetHeureMin;

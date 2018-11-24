@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.tp3_mgl7460.domain;
 
 import java.text.DateFormat;
@@ -12,10 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import org.tp3_mgl7460.analyse.Message;
 
-/**
- *
- * @author sergedelil
- */
+
 public class Geologue extends Membre {
 
     public final int heureMinCycle = 55;
@@ -83,63 +76,6 @@ public class Geologue extends Membre {
             }
         return msg;
     }
-    
-//     public String validerNbHeureMinCours(ArrayList<Activite> activites){
-//    
-//        final int heureMin = 22;
-//        int heureCount = 0;
-//        String msg = null;
-//        
-//        for (Activite activite : activites){
-//            if((activite.getCategorie() != null) && activite.getCategorie().getNomCategorie().equals("cours")){
-//                    heureCount = heureCount + activite.getHeure();
-//                }
-//                
-//        }
-//        if (heureCount < heureMin){
-//                int diff = heureMin - heureCount;
-//                msg = "Il manque "+ diff+" heures de formation pour la categorie cours.";
-//            }
-//        return msg;
-//    }
-//     
-//     public String validerNbHeureMinProjetRecherche(ArrayList<Activite> activites){
-//    
-//        final int heureMin = 3;
-//        int heureCount = 0;
-//        String msg = null;
-//        
-//        for (Activite activite : activites){
-//            if((activite.getCategorie() != null) && activite.getCategorie().getNomCategorie().equals("projet de recherche")){
-//                    heureCount = heureCount + activite.getHeure();
-//                }
-//                
-//        }
-//        if (heureCount < heureMin){
-//                int diff = heureMin - heureCount;
-//                msg = "Il manque "+ diff+" heures de formation pour la categorie projet de recherche.";
-//            }
-//        return msg;
-//    }
-//    
-//     public String validerNbHeureMinGroupeDiscussion(ArrayList<Activite> activites){
-//    
-//        final int heureMin = 1;
-//        int heureCount = 0;
-//        String msg = null;
-//        
-//        for (Activite activite : activites){
-//            if((activite.getCategorie() != null) && activite.getCategorie().getNomCategorie().equals("groupe de discussion")){
-//                    heureCount = heureCount + activite.getHeure();
-//                }
-//                
-//        }
-//        if (heureCount < heureMin){
-//                int diff = heureMin - heureCount;
-//                msg = "Il manque "+ diff + " heures de formation pour la categorie groupe de discussion.";
-//            }
-//        return msg;
-//    }
      
     public String validerDate(Activite activite){
         

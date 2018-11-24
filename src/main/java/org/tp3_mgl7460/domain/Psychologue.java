@@ -4,14 +4,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import org.tp3_mgl7460.analyse.Message;
 
-/**
- *
- * @author sergedelil
- */
 public class Psychologue extends Membre{
     
     private final int heureMinCycle = 90;
@@ -20,8 +15,6 @@ public class Psychologue extends Membre{
     public Psychologue(String nom, String prenom, int sexe, String ordre, String cycle, String numeroPermis) {
         super(nom, prenom, sexe, ordre, cycle, numeroPermis);
     }
-    
-    
     
     @Override
     public boolean validerCycle() {

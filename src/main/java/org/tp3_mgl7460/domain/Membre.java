@@ -1,18 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.tp3_mgl7460.domain;
 
 import java.util.ArrayList;
 import java.util.Objects;
 import org.tp3_mgl7460.analyse.Message;
 
-/**
- *
- * @author sergedelil
- */
+
 public class Membre {
     
     String nom;
@@ -37,7 +30,6 @@ public class Membre {
 
     }
 
-    
     public String getNom() {
         return nom;
     }

@@ -7,14 +7,9 @@ import java.util.ArrayList;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 
-/**
- *
- * @author sergedelil
- */
+
 public class Message {
 
-    
-    
     private JSONObject msgObj;
     private String filename;
     private boolean reponse;
