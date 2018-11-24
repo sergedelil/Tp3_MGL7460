@@ -5,6 +5,11 @@
  */
 package org.tp3_mgl7460.domain;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import org.tp3_mgl7460.analyse.Message;
 
 /**
@@ -44,12 +49,141 @@ public class Geologue extends Membre {
     
     @Override
     public boolean examinerDemande(Message msg){
-        // à redefinir
-        // implementer toute la logique d'affaire selon le type de Membre
-        // examiner la demande et produire les msg dans la sortie
-        return false;
-    }
+       for (Activite activite : this.getActivites()){
+           msg.getErreurs().add(validerDate(activite));
+           msg.getErreurs().add(validerHeure(activite));
+           ArrayList<String> tabCat = ConstruireListeCategorie();
+            if( (activite.getCategorie() == null) || (! tabCat.contains(activite.getCategorie().getNomCategorie())) ){
+                msg.getErreurs().add("L'activité «"+activite.getDescription()+"» est dans une catégorie non reconnue. Elle sera ignorée.");
+            }
+       }
+       
+       msg.getErreurs().add(validateNbHeureMinCategorie(this.getActivites(), 22, "cours"));
+       msg.getErreurs().add(validateNbHeureMinCategorie(this.getActivites(), 3, "projet de recherche"));
+       msg.getErreurs().add(validateNbHeureMinCategorie(this.getActivites(), 1, "groupe de discussion"));
 
+        return true;
+    }
+    
+    public String validateNbHeureMinCategorie(ArrayList<Activite> activites, int heureMin, String nomCategorie){
+    
+        //final int heureMin = 22;
+        int heureCount = 0;
+        String msg = null;
+        
+        for (Activite activite : activites){
+            if((activite.getCategorie() != null) && activite.getCategorie().getNomCategorie().equals(nomCategorie)){
+                    heureCount = heureCount + activite.getHeure();
+                }
+                
+        }
+        if (heureCount < heureMin){
+                int diff = heureMin - heureCount;
+                msg = "Il manque "+ diff+" heures de formation pour la categorie" + " " + nomCategorie + ".";
+            }
+        return msg;
+    }
+    
+//     public String validerNbHeureMinCours(ArrayList<Activite> activites){
+//    
+//        final int heureMin = 22;
+//        int heureCount = 0;
+//        String msg = null;
+//        
+//        for (Activite activite : activites){
+//            if((activite.getCategorie() != null) && activite.getCategorie().getNomCategorie().equals("cours")){
+//                    heureCount = heureCount + activite.getHeure();
+//                }
+//                
+//        }
+//        if (heureCount < heureMin){
+//                int diff = heureMin - heureCount;
+//                msg = "Il manque "+ diff+" heures de formation pour la categorie cours.";
+//            }
+//        return msg;
+//    }
+//     
+//     public String validerNbHeureMinProjetRecherche(ArrayList<Activite> activites){
+//    
+//        final int heureMin = 3;
+//        int heureCount = 0;
+//        String msg = null;
+//        
+//        for (Activite activite : activites){
+//            if((activite.getCategorie() != null) && activite.getCategorie().getNomCategorie().equals("projet de recherche")){
+//                    heureCount = heureCount + activite.getHeure();
+//                }
+//                
+//        }
+//        if (heureCount < heureMin){
+//                int diff = heureMin - heureCount;
+//                msg = "Il manque "+ diff+" heures de formation pour la categorie projet de recherche.";
+//            }
+//        return msg;
+//    }
+//    
+//     public String validerNbHeureMinGroupeDiscussion(ArrayList<Activite> activites){
+//    
+//        final int heureMin = 1;
+//        int heureCount = 0;
+//        String msg = null;
+//        
+//        for (Activite activite : activites){
+//            if((activite.getCategorie() != null) && activite.getCategorie().getNomCategorie().equals("groupe de discussion")){
+//                    heureCount = heureCount + activite.getHeure();
+//                }
+//                
+//        }
+//        if (heureCount < heureMin){
+//                int diff = heureMin - heureCount;
+//                msg = "Il manque "+ diff + " heures de formation pour la categorie groupe de discussion.";
+//            }
+//        return msg;
+//    }
+     
+    public String validerDate(Activite activite){
+        
+        String dateDebut = "2013-06-01";
+        String dateFin = "2016-0-01";
+        String msg = null;
+
+        boolean apres = string2Date(activite.getDate()).after(string2Date(dateDebut));
+        boolean avant = string2Date(activite.getDate()).before(string2Date(dateFin));
+            if (! (avant && apres) ){
+                msg = "La date de l'activité «"+activite.getDescription()+"» n'est pas valide. Elle sera ignorée.";
+            }
+         return msg;
+    }
+    
+    private Date string2Date(String uneDate){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = dateFormat.parse(uneDate);
+        } 
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    } 
+    
+    public String validerHeure(Activite activite){
+    
+        String msg = null;
+        if(! activite.validerHeure()){
+                msg = "L'heure de l'activité «"+activite.getDescription()+"» n'est pas valide. Elle sera ignorée.";
+           }
+        return msg;
+    }
+    
+    private ArrayList<String> ConstruireListeCategorie(){
+        ArrayList<String> tab = new ArrayList<>();
+        this.getCategories().forEach((cat) -> {
+            tab.add(cat.getNomCategorie());
+        });
+        return tab;
+    }
+ 
     @Override
     public String toString() {
         return "Geologue{" + "nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe +", ordre=" + ordre + ", cycle=" + cycle + ", numeroPermis=" + numeroPermis + ", heureMinCycle=" + heureMinCycle + ", activites=" + activites + '}';
