@@ -1,6 +1,7 @@
 
 package org.tp3_mgl7460.domain;
 
+import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.tp3_mgl7460.analyse.Message;
@@ -123,4 +124,51 @@ public class ArchitecteTest {
         msg = new Message("filename");
         assertTrue(obj.examinerDemande(msg));        
     }
+    
+    @Test
+    public void testGetActiviteCategorieHeure_true() {
+        obj = new Architecte(1, "nom", "prenom", 1, "ordre", "cycle", "numeroPermis");
+        Categorie categorie = new Categorie("categorie", 0, 10);
+        Activite act = new Activite("description", categorie, 5,"date");
+        // Less than max hour: 5<10
+        boolean bResult = obj.GetActiviteCategorieHeure(act, "categorie", 5) == 5;
+        assertTrue(bResult);        
+    }    
+    
+    @Test
+    public void testGetActiviteCategorieHeure_false() {
+        obj = new Architecte(1, "nom", "prenom", 1, "ordre", "cycle", "numeroPermis");
+        Categorie categorie = new Categorie("categorie", 0, 10);
+        Activite act = new Activite("description", categorie, 15,"date");
+        // more than max hour: 15>10
+        boolean bResult = obj.GetActiviteCategorieHeure(act, "categorie", 15) == 15;
+        assertFalse(bResult);        
+    }      
+    
+    @Test
+    public void testConstruireListeCategorie() { 
+        obj = new Architecte(1, "nom", "prenom", 1, "ordre", "cycle", "numeroPermis");
+        Categorie categorie = new Categorie("categorie1", 0, 10);
+        ArrayList<Categorie> arrListCat = new ArrayList<Categorie>();
+        arrListCat.add(categorie);        
+        obj.setCategories(arrListCat);
+        
+        ArrayList<String> arrList = obj.ConstruireListeCategorie();
+        assertTrue(arrList.get(0) == "categorie1");
+    } 
+    
+    @Test
+    public void testestCategorieDes6() {   
+       obj = new Architecte(1, "nom", "prenom", 1, "ordre", "cycle", "numeroPermis"); 
+       
+       boolean bestCategorieDes6 = obj.estCategorieDes6("cours") && 
+                                   obj.estCategorieDes6("atelier") &&
+                                   obj.estCategorieDes6("séminaire") &&
+                                   obj.estCategorieDes6("colloque") &&
+                                   obj.estCategorieDes6("conférence") &&
+                                   obj.estCategorieDes6("lecture dirigée");
+              
+       assertTrue(bestCategorieDes6);
+    } 
+    
 }

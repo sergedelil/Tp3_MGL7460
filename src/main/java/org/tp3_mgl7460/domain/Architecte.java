@@ -56,7 +56,7 @@ public class Architecte extends Membre{
         return heureTransferee > 0;
     }
     
-    private boolean estCategorieDes6(String categorie){
+    public boolean estCategorieDes6(String categorie){
         ArrayList<String> catList = new ArrayList<>();
         String [] listCategorie = {"cours", "atelier", "séminaire", "colloque", "conférence", "lecture dirigée"};
         catList.addAll(Arrays.asList(listCategorie));
@@ -137,7 +137,7 @@ public class Architecte extends Membre{
     }
             
     
-    private int GetActiviteCategorieHeure (Activite activite, String categorie, int heureAccumule){
+    public int GetActiviteCategorieHeure (Activite activite, String categorie, int heureAccumule){
         int result = 0;
         if(activite.getCategorie().getNomCategorie().equals(categorie)){
             if(heureAccumule < activite.getCategorie().getHeureMax())
@@ -146,7 +146,7 @@ public class Architecte extends Membre{
         return result;
     }
     
-    private ArrayList<String> ConstruireListeCategorie(){
+    public ArrayList<String> ConstruireListeCategorie(){
         ArrayList<String> tab = new ArrayList<>();
         this.getCategories().forEach((cat) -> {
             tab.add(cat.getNomCategorie());
