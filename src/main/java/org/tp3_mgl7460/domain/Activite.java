@@ -101,9 +101,5 @@ public class Activite {
        
     }
     
-    public boolean validerActivite(){
-        return false;
-    }
-    
     
 }
