@@ -1,10 +1,8 @@
 package org.tp3_mgl7460.domain;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -16,14 +14,6 @@ public class ActiviteTest {
    Categorie categorieCours;
     
     
-        @BeforeClass
-    public static void setUpClass() {       
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
     @Before
     public void setUp() {
         
@@ -34,6 +24,8 @@ public class ActiviteTest {
     
     @After
     public void tearDown() {
+        categorieCours = null;
+        activite = null;
     }
     
     @Test

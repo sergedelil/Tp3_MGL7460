@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.tp3_mgl7460.domain;
 
 import org.junit.Test;
@@ -36,9 +32,7 @@ public class ArchitecteTest {
         
     }   
     
-    /**
-     * Test of validerCycle method, of class Architecte.
-     */
+    
     @Test
     public void testValiderCycle_GoodCycle() {
       obj=new Architecte(1, "nom", "prenom", 1, "ordre", cycleGood, "numeroPermis");
@@ -51,9 +45,6 @@ public class ArchitecteTest {
       assertFalse(obj.validerCycle());
     }   
     
-    /**
-     * Test of validerNumeroPermis method, of class Architecte.
-     */
     @Test
     public void testValiderNumeroPermis_BadLong() {
         obj=new Architecte(1, "nom", "prenom", 1, "ordre", "cycle", permisLong);      
@@ -90,9 +81,6 @@ public class ArchitecteTest {
         assertFalse(obj.validerNumeroPermis());
     } 
 
-    /**
-     * Test of atteintHeureMinCycle method, of class Architecte.
-     */
     @Test
     public void testAtteintHeureMinCycle_GoodMinHour() {
         obj=new Architecte(1, "nom", "prenom", 1, "ordre", "cycle", "numeroPermis");
@@ -111,9 +99,6 @@ public class ArchitecteTest {
         assertFalse(obj.atteintHeureMinCycle(heureMinCycle-1));        
     }     
 
-    /**
-     * Test of validerHeureTranferee method, of class Architecte.
-     */
     @Test
     public void testValiderHeureTranferee_GoodPositive() {
         obj=new Architecte(heureTransfereePositive, "nom", "prenom", 1, "ordre", "cycle", "numeroPermis");
@@ -132,15 +117,10 @@ public class ArchitecteTest {
         assertFalse(obj.validerHeureTranferee());
     }    
 
-    /**
-     * Test of examinerDemande method, of class Architecte.
-     */
     @Test
     public void testExaminerDemande() {
         obj = new Architecte(1, "nom", "prenom", 1, "ordre", "cycle", "numeroPermis");
         msg = new Message("filename");
         assertTrue(obj.examinerDemande(msg));        
     }
-
-    
 }

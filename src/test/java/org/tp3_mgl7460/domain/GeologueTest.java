@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.tp3_mgl7460.domain;
 
 import org.junit.After;
@@ -13,10 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.tp3_mgl7460.analyse.Message;
 
-/**
- *
- * @author andres.piraquive
- */
+
 public class GeologueTest {
 
     Geologue geologue;
@@ -55,25 +48,16 @@ public class GeologueTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of validerCycle method, of class Geologue.
-     */
     @Test
     public void testValiderCycle() {
         assertEquals(true, geologue.validerCycle());
     }
 
-    /**
-     * Test of validerNumeroPermis method, of class Geologue.
-     */
     @Test
     public void testValiderNumeroPermis() {
         assertEquals(true, geologue.validerNumeroPermis());
     }
 
-    /**
-     * Test of atteintHeureMinCycle method, of class Geologue.
-     */
     @Test
     public void testAtteintHeureMinCycle() {
         assertEquals(true, geologue.atteintHeureMinCycle(55));
@@ -116,9 +100,6 @@ public class GeologueTest {
         assertTrue(geologue.examinerDemande(msg));
     }
 
-    /**
-     * Test of toString method, of class Geologue.
-     */
     @Test
     public void testToString() {
         assertEquals("Geologue{" + "nom=" + geologue.nom
