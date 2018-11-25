@@ -24,32 +24,7 @@ public class CategorieTest {
     public void testGetNomCategorie_1() {
         assertTrue(cat.getNomCategorie().matches("^[A-Za-z]{2}.+$"));
     }
-    
-    @Test
-    public void testValiderCategorie() {
-       
-    }
-
-    @Test
-    public void testAdmetHeureMin() {
-        
-    }
-
-    @Test
-    public void testAdmetHeureMax() {
-    }
-
-    @Test
-    public void testAtteintHeureMin() {
-       
-    }
-
-    @Test
-    public void testAtteintHeureMax() {
-        
-    }
-    
-    
+              
     @Test
     public void testValiderCategorie_cours() {
         cat = new Categorie("cours", 16, -1);
