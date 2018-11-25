@@ -1,1 +1,7 @@
-{}
+{
+   "complet": false,
+   "erreurs":    [
+      "resources/input.json",
+      ""
+   ]
+}
