@@ -144,11 +144,11 @@ public class Membre {
     }
     
     public boolean validerNom(){
-        return nom.matches("^\\w+$");
+        return nom.matches("^[a-z ,.'-]+$");
     }
     
     public boolean validerPrenom(){
-        return prenom.matches("^\\w+$");
+        return prenom.matches("^[a-z ,.'-]+$");
     }
     
     public boolean validerSexe(){

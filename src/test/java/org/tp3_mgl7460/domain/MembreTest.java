@@ -68,40 +68,23 @@ public class MembreTest {
     }
 
     @Test
-    public void testValiderNom() {
+    public void testNomNotNull() {
         assertNotNull(membre.getNom());
     }
     
     @Test
-    public void testValiderNom_1() {
+    public void testNomLength() {
         assertTrue(membre.getNom().length() > 1);
     }
 
     @Test
-    public void testValiderPrenom() {
+    public void testPrenomNotNull() {
         assertNotNull(membre.getPrenom());
     }
     
     @Test
-    public void testValiderPrenom_1() {
+    public void testPrenomLength() {
         assertTrue(membre.getPrenom().length() > 1);
     }
     
-    @Test
-    public void testValiderSexe() {
-        assertTrue(String.valueOf(membre.getSexe()).matches("^[012]$"));
-    }
-    
-    @Test
-    public void testValiderOrdre() {
-        String listOrdre [] = {"Architecte","Psychologue","Geologue"};
-        boolean trouve = false;
-        for(String ordre : listOrdre){
-            if (ordre.equalsIgnoreCase(membre.getOrdre())){
-                trouve = true;
-                break;
-            }
-        }
-        assertTrue(trouve);
-    }
 }
