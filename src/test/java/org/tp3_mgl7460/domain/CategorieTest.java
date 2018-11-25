@@ -217,4 +217,34 @@ public class CategorieTest {
         assertEquals(true, cat.atteintHeureMax());
     }
     
+      @Test
+    public void testValiderEquals_ObjectNonNull() {
+        Categorie cat1 = new Categorie("cours", 15, -1);
+        assertTrue(cat.equals(cat1));
+    }
+
+    @Test
+    public void testValiderEquals_ObjectNull() {
+        Object object = null;
+        assertFalse(cat.equals(object));
+    }
+
+    @Test
+    public void testValiderEquals_This_Dif_Object() {
+        Categorie cat1 = new Categorie("cou", 15, -1);
+        assertFalse(cat.equals(cat1));
+    }
+
+    @Test
+    public void testValiderEquals_This_Dif_HeureMin() {
+          Categorie cat1 = new Categorie("cours", 12, -1);
+        assertFalse(cat.equals(cat1));
+    }
+
+     @Test
+    public void testValiderEquals_This_Dif_HeureMax() {
+          Categorie cat1 = new Categorie("cours", 15, 2);
+        assertFalse(cat.equals(cat1));
+    }
+    
 }

@@ -67,12 +67,12 @@ public class MembreTest {
 
     @Test
     public void testValiderNom() {
-        assertTrue(membre.validerNom());
+        assertFalse(membre.validerNom());
     }
 
     @Test
     public void testValiderPrenom() {
-        assertTrue(membre.validerPrenom());
+        assertFalse(membre.validerPrenom());
     }
 
     @Test
